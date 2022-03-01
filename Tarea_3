@@ -1,0 +1,39 @@
+from numpy.core.function_base import linspace
+import matplotlib.pyplot as plt
+import numpy as np
+import random  
+from math import sqrt, tan
+
+n = 15000
+c = 0
+for i in range(n):
+  xc = random.random()
+  yc = random.random()
+  xp = random.random()
+  while(0.25**2 - (xp-xc)**2)< 0:
+    xp = random.random()
+
+  yp = sqrt(0.25**2 - (xp-xc)**2) + yc
+  p1 = [xc, yc]
+  p2 = [xp, yp]
+  x_values = [p1[0], p2[0]]
+  y_values = [p1[1], p2[1]]
+  if (0<xc<0.25 and 0<xp<0.25):
+    plt.plot(x_values, y_values, color="red")
+  elif(0.25<xc<0.5 and 0.25<xp<0.5):
+    plt.plot(x_values, y_values, color="red")
+  elif(0.5<xc<0.75 and 0.5<xp<0.75):
+    plt.plot(x_values, y_values, color="red")
+  elif(0.75<xc<1 and 0.75<xp<1):
+    plt.plot(x_values, y_values, color="red")
+  else:
+    plt.plot(x_values, y_values, color="blue")
+    c = c+1
+
+print((2*n)/c, c) 
+plt.axvline(x=0.0, color = "black")
+plt.axvline(x=0.25, color = "black")
+plt.axvline(x=0.5, color = "black")
+plt.axvline(x=0.75, color = "black")
+plt.axvline(x=1, color = "black")
+
